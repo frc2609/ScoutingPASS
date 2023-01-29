@@ -1,3 +1,4 @@
+var usingTBA = false
 var config_data = `
 {
   "title": "Scouting PASS 2023",
@@ -35,8 +36,10 @@ var config_data = `
       "min": 1,
       "max": 100,
       "required": "true"
-    },
-    { "name": "Robot",
+    },`
+if (usingTBA) {
+  config_data +=
+    `    { "name": "Robot",
       "code": "r",
       "type": "robot",
       "choices": {
@@ -48,8 +51,10 @@ var config_data = `
         "b3": "Blue-3"
       },
       "required":"true"
-    },
-    { "name": "Team #",
+    },`
+}
+config_data +=
+  `    { "name": "Team #",
       "code": "t",
       "type": "team",
       "min": 1,

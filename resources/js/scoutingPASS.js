@@ -23,6 +23,7 @@ var options = {
 // Must be filled in: e=event, m=match#, l=level(q,qf,sf,f), t=team#, r=robot(r1,r2,b1..), s=scouter
 //var requiredFields = ["e", "m", "l", "t", "r", "s", "as"];
 var requiredFields = ["e", "m", "l", "r", "s", "as"];
+var usingTBA = true;
 
 function addTimer(table, idx, name, data) {
   var row = table.insertRow(idx);
@@ -289,7 +290,7 @@ function addClickableImage(table, idx, name, data) {
   inp.setAttribute("id", "input_" + data.code);
   inp.setAttribute("value", "[]");
   inp.setAttribute("class", "clickableImage");
- 
+
   cell.appendChild(inp);
 
   // TODO: Make these more efficient/elegant
@@ -299,8 +300,8 @@ function addClickableImage(table, idx, name, data) {
   inp.setAttribute("value", "none");
   if (data.hasOwnProperty('clickRestriction')) {
     if ((data.clickRestriction == "one") ||
-        (data.clickRestriction == "onePerBox")) {
-          inp.setAttribute("value", data.clickRestriction);
+      (data.clickRestriction == "onePerBox")) {
+      inp.setAttribute("value", data.clickRestriction);
     }
   }
   cell.appendChild(inp);
@@ -613,7 +614,7 @@ function addElement(table, idx, data) {
   ) {
     idx = addNumber(table, idx, name, data);
   } else if ((data.type == 'field_image') ||
-  			 (data.type == 'clickable_image')) {
+    (data.type == 'clickable_image')) {
     idx = addClickableImage(table, idx, name, data);
   } else if ((data.type == 'bool') ||
     (data.type == 'checkbox') ||
@@ -623,7 +624,7 @@ function addElement(table, idx, data) {
   } else if (data.type == 'counter') {
     idx = addCounter(table, idx, name, data);
   } else if ((data.type == 'timer') ||
-	     (data.type == 'cycle')) {
+    (data.type == 'cycle')) {
     idx = addTimer(table, idx, name, data);
   } else {
     console.log(`Unrecognized type: ${data.type}`);
@@ -809,6 +810,9 @@ function validateData() {
   var ret = true
   var errStr = "Bad fields: ";
   for (rf of requiredFields) {
+    if (!usingTBA && rf == "r") {
+      continue
+    }
     // Robot requires special (radio) validation
     if (rf == "r") {
       if (!validateRobot()) {
@@ -822,8 +826,8 @@ function validateData() {
       }
       // Normal validation (length <> 0)
     } else if (document.getElementById("input_" + rf).value == "[]") {
-        errStr += rf + " ";
-        ret = false;
+      errStr += rf + " ";
+      ret = false;
     } else if (document.getElementById("input_" + rf).value.length == 0) {
       errStr += rf + " "
       ret = false
@@ -891,9 +895,9 @@ function getData(useStr) {
           }
         }
       } else {
-	if (e.className == "cycle") {
-	  e = document.getElementById("cycletime_" + code);
-	}
+        if (e.className == "cycle") {
+          e = document.getElementById("cycletime_" + code);
+        }
         if (useStr) {
           str = str + code + '=' + e.value.split(';').join('-')
         } else {
@@ -911,12 +915,20 @@ function getData(useStr) {
 
 function updateQRHeader() {
   var str = 'Event: !EVENT! Match: !MATCH! Robot: !ROBOT! Team: !TEAM!';
+  var str = 'Event: !EVENT! Match: !MATCH! '
+  if (!usingTBA) {
+    str += 'Robot: !ROBOT! '
+  }
+  str += 'Team: !TEAM!'
 
   str = str
     .replace('!EVENT!', document.getElementById("input_e").value)
     .replace('!MATCH!', document.getElementById("input_m").value)
-    .replace('!ROBOT!', document.getElementById("display_r").value)
     .replace('!TEAM!', document.getElementById("input_t").value);
+
+  if (usingTBA) {
+    str = str.replace('!ROBOT!', document.getElementById("display_r").value)
+  }
 
   document.getElementById("display_qr-info").textContent = str;
 }
@@ -1001,11 +1013,11 @@ function clearForm() {
       if (e.type == "number" || e.type == "text" || e.type == "hidden") {
         if ((e.className == "counter") ||
           (e.className == "timer") ||
-	  (e.className == "cycle")) {
+          (e.className == "cycle")) {
           e.value = 0
-	  if (e.className == "timer" || e.className == "cycle") {
-	    // Stop interval
-	    timerStatus = document.getElementById("status_" + code);
+          if (e.className == "timer" || e.className == "cycle") {
+            // Stop interval
+            timerStatus = document.getElementById("status_" + code);
             startButton = document.getElementById("start_" + code);
             intervalIdField = document.getElementById("intervalId_" + code);
             var intervalId = intervalIdField.value;
@@ -1015,12 +1027,12 @@ function clearForm() {
               clearInterval(intervalId);
             }
             intervalIdField.value = '';
-	    if (e.className == "cycle") {
-	      document.getElementById("cycletime_" + code).value = "[]"
-	      document.getElementById("display_" + code).value = ""
-	    }
-	  }
-	} else {
+            if (e.className == "cycle") {
+              document.getElementById("cycletime_" + code).value = "[]"
+              document.getElementById("display_" + code).value = ""
+            }
+          }
+        } else {
           e.value = ""
         }
       } else if (e.type == "checkbox") {
@@ -1067,7 +1079,7 @@ function swipePage(increment) {
       window.scrollTo(0, 0);
       slides[slide].style.display = "table";
       document.getElementById('data').innerHTML = "";
-      document.getElementById('copyButton').setAttribute('value','Copy Data');
+      document.getElementById('copyButton').setAttribute('value', 'Copy Data');
     }
   }
 }
@@ -1146,7 +1158,7 @@ function onFieldClick(event) {
   let xyArr = Array.from(JSON.parse(changingXY.value));
 
   if ((toggleClick.toLowerCase() == 'true') &&
-      (boxArr.includes(box))) {
+    (boxArr.includes(box))) {
     // Remove it
     let idx = boxArr.indexOf(box);
     boxArr.splice(idx, 1);
@@ -1196,7 +1208,7 @@ function findMiddleOfBox(boxNum, width, height, resX, resY) {
   let boxY = Math.floor((boxNum - boxX + 1) / resX);
   let x = Math.round((boxWidth * boxX) + (Math.floor(boxWidth / 2)));
   let y = Math.round((boxHeight * boxY) + (Math.floor(boxHeight / 2)));
-  return x+","+y
+  return x + "," + y
 }
 
 function getIdBase(name) {
@@ -1294,8 +1306,7 @@ function counter(element, step) {
   }
 }
 
-function newCycle(event)
-{
+function newCycle(event) {
   let timerID = event.firstChild;
   let base = getIdBase(timerID.id);
   let inp = document.getElementById("input" + base)
@@ -1308,7 +1319,7 @@ function newCycle(event)
     tempValue.push(cycleTime);
     cycleInput.value = JSON.stringify(tempValue);
     let d = document.getElementById("display" + base);
-    d.value = cycleInput.value.replace(/\"/g,'').replace(/\[/g, '').replace(/\]/g, '').replace(/,/g, ', ');
+    d.value = cycleInput.value.replace(/\"/g, '').replace(/\[/g, '').replace(/\]/g, '').replace(/,/g, ', ');
   }
 }
 
@@ -1321,7 +1332,7 @@ function undoCycle(event) {
   tempValue.pop();
   cycleInput.value = JSON.stringify(tempValue);
   let d = document.getElementById("display" + uId);
-  d.value = cycleInput.value.replace(/\"/g,'').replace(/\[/g, '').replace(/\]/g, '').replace(/,/g, ', ');
+  d.value = cycleInput.value.replace(/\"/g, '').replace(/\[/g, '').replace(/\]/g, '').replace(/,/g, ', ');
 }
 
 function resetTimer(event) {
@@ -1401,13 +1412,13 @@ function flip(event) {
   drawFields();
 }
 
-function displayData(){
+function displayData() {
   document.getElementById('data').innerHTML = getData(true);
 }
 
-function copyData(){
+function copyData() {
   navigator.clipboard.writeText(getData(true));
-  document.getElementById('copyButton').setAttribute('value','Copied');
+  document.getElementById('copyButton').setAttribute('value', 'Copied');
 }
 
 window.onload = function () {
