@@ -873,15 +873,29 @@ function getData(useStr) {
     name = e.name
     radio = code.indexOf("_")
     console.log(name)
-    if (radio > -1) {
+    if (name == 'co') {
+      if (start == false) {
+        str = str + delim
+      } else {
+        start = false
+      }
+      if (useStr) {
+        val = ''
+        if (e.value) {
+          val = e.value.replace(/ /g, "%20")
+        }
+        str = str + code + '="' + val + '"'
+      } else {
+        fd.append(name, '' + e.value)
+      }
+    }
+    else if (radio > -1) {
       if (e.checked) {
         if (start == false) {
           str = str + delim
         } else {
           start = false
         }
-        // str=str+code.substr(0,radio)+'='+code.substr(radio+1)
-        // document.getElementById("display_"+code.substr(0, radio)).value = code.substr(radio+1)
         if (useStr) {
           str = str + code.substr(0, radio) + '=' + e.value
         } else {

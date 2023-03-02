@@ -14,7 +14,7 @@ var config_data = `
     { "name": "Event",
       "code": "e",
       "type": "event",
-      "defaultValue": "2022carv",
+      "defaultValue": "2023bcvi",
       "required": "true",
       "disabled": "true"
     },
@@ -65,7 +65,7 @@ var config_data = `
   ],
   "auton": [
     { "name": "Auto Scoring",
-      "code": "aut_grd",
+      "code": "ag",
       "type": "clickable_image",
       "filename": "2023/grid_image.png",
       "dimensions": "9 4",
@@ -76,15 +76,15 @@ var config_data = `
       "shape": "circle 12 black red true"
     },
     { "name": "Crossed Charging Station",
-      "code": "aut_xchr",
+      "code": "axc",
       "type": "bool"
     },
     { "name": "Mobility?",
-      "code": "aut_mob",
+      "code": "am",
       "type": "bool"
     },
     { "name": "# of FLOOR pickup",
-    "code": "aut_flr_cnt",
+    "code": "afp",
     "type": "counter"
     },
     { "name": "Docked",
@@ -105,7 +105,7 @@ var config_data = `
       "type": "cycle"
     },
     { "name": "Grid Scoring",
-      "code": "tel_grd",
+      "code": "tg",
       "type": "clickable_image",
       "filename": "2023/grid_image.png",
       "dimensions": "9 4",
@@ -117,7 +117,7 @@ var config_data = `
       "cycleTimer": "tct"
     },
     { "name": "Floor Pickup",
-      "code": "fpu",
+      "code": "tft",
       "type": "radio",
       "choices": {
         "o": "Cones<br>",
@@ -128,35 +128,43 @@ var config_data = `
       "defaultValue": "x"
     },
     { "name": "# of FLOOR pickup",
-    "code": "tel_flr_cnt",
+    "code": "tfp",
     "type": "counter"
     },
     { "name": "# of SHELF pickup",
-    "code": "tel_shf_cnt",
+    "code": "tsc",
     "type": "counter"
     },
     { "name": "# of RAMP pickup",
-    "code": "tel_rmp_cnt",
+    "code": "trc",
     "type": "counter"
     },
     { "name": "Was Fed<br>Game Pieces?",
-      "code": "tel_fed_q",
+      "code": "tfq",
       "type": "bool"
     },
     { "name": "# of FEED to other bot",
-    "code": "tel_fed_cnt",
+    "code": "tfc",
     "type": "counter"
     },
     { "name": "Was Defended?",
-      "code": "tel_def_q",
+      "code": "tdq",
       "type": "bool"
     },
-    { "name": "Who Defended this bot?<br>(sepparate with commas)",
-      "code": "tel_def_ary",
+    { "name": "Who Defended this bot?<br>(sepparate with commas no spaces)",
+      "code": "tdb",
+      "type": "text"
+    },
+    { "name": "Defended others?",
+      "code": "tdo",
+      "type": "bool"
+    },
+    { "name": "Who did this bot Defend?<br>(sepparate with commas no spaces)",
+      "code": "tda",
       "type": "text"
     },
     { "name": "Smart Placement<br>(creates Links)",
-      "code": "tel_lnk",
+      "code": "tl",
       "type": "bool"
     }
   ],
@@ -174,7 +182,7 @@ var config_data = `
       "defaultValue": "x"
     },
     { "name": "Total # of alliance<br>robots docked/engaged",
-      "code": "eg_cnt",
+      "code": "egc",
       "type": "counter"
     }
   ],
@@ -191,11 +199,11 @@ var config_data = `
       "defaultValue": "x"
     },
     { "name": "Received RED card",
-    "code": "red_cnt",
+    "code": "rc",
     "type": "counter"
     },
     { "name": "Received YELLOW card",
-      "code": "yel_cnt",
+      "code": "yc",
       "type": "counter"
     },
     { "name": "Defense Rating",
@@ -207,6 +215,18 @@ var config_data = `
         "g": "Good<br>",
         "e": "Excellent<br>",
         "x": "Did not play defense"
+      },
+      "defaultValue": "x"
+    },
+    { "name": "defendability Rating",
+      "code": "dar",
+      "type": "radio",
+      "choices": {
+        "e": "Easily defendable<br>",
+        "a": "Average<br>",
+        "h": "Hard to defend<br>",
+        "i": "Near impossible<br>",
+        "x": "Did not observe"
       },
       "defaultValue": "x"
     },
@@ -223,7 +243,7 @@ var config_data = `
       "defaultValue":"3"
     },
     { "name": "Died/Immobilized",
-      "code": "death_stat",
+      "code": "ded",
       "type": "bool"
     },
     { "name": "Tippy?",
@@ -238,16 +258,16 @@ var config_data = `
       "defaultValue":"1"
     },
     { "name": "Dropped Cones (>2)",
-      "code": "cone_drp",
+      "code": "cd",
       "type": "bool"
     },
     { "name": "Do they make good<br>alliance partner?",
       "tooltip": "Would you want this robot on your alliance in eliminations?",
-      "code": "all_part",
+      "code": "ali",
       "type": "bool"
     },
     { "name": "Other comments",
-      "code": "comments",
+      "code": "co",
       "type": "text",
       "size": 15,
       "maxSize": 50
