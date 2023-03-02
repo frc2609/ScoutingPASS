@@ -14,7 +14,7 @@ var config_data = `
     { "name": "Event",
       "code": "e",
       "type": "event",
-      "defaultValue": "2023BCVI",
+      "defaultValue": "2022carv",
       "required": "true",
       "disabled": "true"
     },
@@ -65,7 +65,7 @@ var config_data = `
   ],
   "auton": [
     { "name": "Auto Scoring",
-      "code": "asg",
+      "code": "aut_grd",
       "type": "clickable_image",
       "filename": "2023/grid_image.png",
       "dimensions": "9 4",
@@ -75,20 +75,20 @@ var config_data = `
       "showUndo": "false",
       "shape": "circle 12 black red true"
     },
-    { "name": "Crossed Cable",
-      "code": "acc",
-      "type": "bool"
-    },
     { "name": "Crossed Charging Station",
-      "code": "acs",
+      "code": "aut_xchr",
       "type": "bool"
     },
     { "name": "Mobility?",
-      "code": "am",
+      "code": "aut_mob",
       "type": "bool"
     },
+    { "name": "# of FLOOR pickup",
+    "code": "aut_flr_cnt",
+    "type": "counter"
+    },
     { "name": "Docked",
-      "code": "ad",
+      "code": "aut_dock",
       "type":"radio",
       "choices": {
         "d": "Docked (not Engaged)<br>",
@@ -105,7 +105,7 @@ var config_data = `
       "type": "cycle"
     },
     { "name": "Grid Scoring",
-      "code": "tsg",
+      "code": "tel_grd",
       "type": "clickable_image",
       "filename": "2023/grid_image.png",
       "dimensions": "9 4",
@@ -116,29 +116,8 @@ var config_data = `
       "shape": "circle 12 black red true",
       "cycleTimer": "tct"
     },
-    { "name": "Feeder Count<br>(Fed another bot)",
-      "code": "tfc",
-      "type": "counter",
-      "cycleTimer": "tct"
-    },
-    { "name": "Was Fed<br>Game Pieces",
-      "code": "wf",
-      "type": "bool"
-    },
-    { "name": "Was Defended",
-      "code": "wd",
-      "type": "bool"
-    },
-    { "name": "Who Defended this bot",
-      "code": "who",
-      "type": "text"
-    },
-    { "name": "Smart Placement<br>(creates Links)",
-      "code": "lnk",
-      "type": "bool"
-    },
     { "name": "Floor Pickup",
-      "code": "fpu",
+      "code": "tel_flr_typ",
       "type": "radio",
       "choices": {
         "o": "Cones<br>",
@@ -147,15 +126,43 @@ var config_data = `
         "x": "Not Attempted"
       },
       "defaultValue": "x"
+    },
+    { "name": "# of FLOOR pickup",
+    "code": "tel_flr_cnt",
+    "type": "counter"
+    },
+    { "name": "# of SHELF pickup",
+    "code": "tel_shf_cnt",
+    "type": "counter"
+    },
+    { "name": "# of RAMP pickup",
+    "code": "tel_rmp_cnt",
+    "type": "counter"
+    },
+    { "name": "Was Fed<br>Game Pieces?",
+      "code": "tel_fed_q",
+      "type": "bool"
+    },
+    { "name": "# of FEED to other bot",
+    "code": "tel_fed_cnt",
+    "type": "counter"
+    },
+    { "name": "Was Defended?",
+      "code": "tel_def_q",
+      "type": "bool"
+    },
+    { "name": "Who Defended this bot?<br>(sepparate with commas)",
+      "code": "tel_def_ary",
+      "type": "text"
+    },
+    { "name": "Smart Placement<br>(creates Links)",
+      "code": "tel_lnk",
+      "type": "bool"
     }
   ],
   "endgame": [
-    { "name": "Docking Timer",
-      "code": "dt",
-      "type": "timer"
-    },
     { "name": "Final Status",
-      "code": "fs",
+      "code": "eg_stat",
       "type":"radio",
       "choices": {
         "p": "Parked<br>",
@@ -167,13 +174,13 @@ var config_data = `
       "defaultValue": "x"
     },
     { "name": "Total # of alliance<br>robots docked/engaged",
-      "code": "dn",
+      "code": "eg_cnt",
       "type": "counter"
     }
   ],
   "postmatch": [
     { "name": "Driver Skill",
-      "code": "ds",
+      "code": "drv_skl",
       "type": "radio",
       "choices": {
         "n": "Not Effective<br>",
@@ -183,12 +190,16 @@ var config_data = `
       },
       "defaultValue": "x"
     },
-    { "name": "Links Scored",
-      "code": "ls",
+    { "name": "Received RED card",
+    "code": "red_cnt",
+    "type": "counter"
+    },
+    { "name": "Received YELLOW card",
+      "code": "yel_cnt",
       "type": "counter"
     },
     { "name": "Defense Rating",
-      "code": "dr",
+      "code": "def_rate",
       "type": "radio",
       "choices": {
         "b": "Below Average<br>",
@@ -199,41 +210,44 @@ var config_data = `
       },
       "defaultValue": "x"
     },
-    { "name": "Swerve drive?",
-      "code": "sd",
-      "type": "bool"
-    },
     { "name": "Speed Rating",
-      "code": "sr",
+      "code": "spd_stat",
       "type": "radio",
       "choices": {
         "1": "1 (slow)<br>",
-        "2": "2<br>",
-        "3": "3<br>",
-        "4": "4<br>",
+        "2": "2 (below avg)<br>",
+        "3": "3 (average)<br>",
+        "4": "4 (above avg)<br>",
         "5": "5 (fast)"
       },
       "defaultValue":"3"
     },
     { "name": "Died/Immobilized",
-      "code": "die",
+      "code": "death_stat",
       "type": "bool"
     },
-    { "name": "Tippy<br>(almost tipped over)",
-      "code": "tip",
-      "type": "bool"
+    { "name": "Tippy?",
+      "code": "tip_stat",
+      "type": "radio",
+      "choices": {
+        "1": "1 (not tippy)<br>",
+        "2": "2 (tippy)<br>",
+        "3": "3 (very tippy)<br>",
+        "4": "4 (tipped over)"
+      },
+      "defaultValue":"1"
     },
     { "name": "Dropped Cones (>2)",
-      "code": "dc",
+      "code": "cone_drp",
       "type": "bool"
     },
-    { "name": "Make good<br>alliance partner?",
+    { "name": "Do they make good<br>alliance partner?",
       "tooltip": "Would you want this robot on your alliance in eliminations?",
-      "code": "all",
+      "code": "all_part",
       "type": "bool"
     },
-    { "name": "Comments",
-      "code": "co",
+    { "name": "Other comments",
+      "code": "comments",
       "type": "text",
       "size": 15,
       "maxSize": 50
