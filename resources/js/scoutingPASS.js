@@ -975,7 +975,7 @@ function qr_regenerate() {
   console.log(data)
 
   // Regenerate QR Code
-  qr.makeCode("http://165.232.156.59:3010?" + data)
+  qr.makeCode("http://165.232.156.59?" + data)
 
   updateQRHeader()
   return true
