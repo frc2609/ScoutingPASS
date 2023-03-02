@@ -88,7 +88,7 @@ var config_data = `
     "type": "counter"
     },
     { "name": "Docked",
-      "code": "aut_dock",
+      "code": "ad",
       "type":"radio",
       "choices": {
         "d": "Docked (not Engaged)<br>",
@@ -117,7 +117,7 @@ var config_data = `
       "cycleTimer": "tct"
     },
     { "name": "Floor Pickup",
-      "code": "tel_flr_typ",
+      "code": "fpu",
       "type": "radio",
       "choices": {
         "o": "Cones<br>",
@@ -162,7 +162,7 @@ var config_data = `
   ],
   "endgame": [
     { "name": "Final Status",
-      "code": "eg_stat",
+      "code": "fs",
       "type":"radio",
       "choices": {
         "p": "Parked<br>",
@@ -180,7 +180,7 @@ var config_data = `
   ],
   "postmatch": [
     { "name": "Driver Skill",
-      "code": "drv_skl",
+      "code": "ds",
       "type": "radio",
       "choices": {
         "n": "Not Effective<br>",
@@ -199,7 +199,7 @@ var config_data = `
       "type": "counter"
     },
     { "name": "Defense Rating",
-      "code": "def_rate",
+      "code": "dr",
       "type": "radio",
       "choices": {
         "b": "Below Average<br>",
@@ -211,7 +211,7 @@ var config_data = `
       "defaultValue": "x"
     },
     { "name": "Speed Rating",
-      "code": "spd_stat",
+      "code": "sr",
       "type": "radio",
       "choices": {
         "1": "1 (slow)<br>",
@@ -227,7 +227,7 @@ var config_data = `
       "type": "bool"
     },
     { "name": "Tippy?",
-      "code": "tip_stat",
+      "code": "tip",
       "type": "radio",
       "choices": {
         "1": "1 (not tippy)<br>",

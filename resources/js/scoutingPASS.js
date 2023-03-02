@@ -872,6 +872,7 @@ function getData(useStr) {
     code = e.id.substring(6)
     name = e.name
     radio = code.indexOf("_")
+    console.log(name)
     if (radio > -1) {
       if (e.checked) {
         if (start == false) {
