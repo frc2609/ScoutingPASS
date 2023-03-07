@@ -972,10 +972,9 @@ function qr_regenerate() {
 
   // Get data
   data = getData(true)
-  console.log(data)
 
   // Regenerate QR Code
-  qr.makeCode("http://165.232.156.59?" + data)
+  qr.makeCode("http://165.232.156.59/insert?" + data)
 
   updateQRHeader()
   return true
@@ -1116,6 +1115,30 @@ function swipePage(increment) {
       document.getElementById('copyButton').setAttribute('value', 'Copy Data');
     }
   }
+}
+
+function submitData() {
+  data = getData(true)
+  fetch("http://165.232.156.59/insert?" + data, {
+    method: "GET",
+    mode: 'no-cors',
+    headers: {
+      'Content-Type': 'application/json',
+      'Access-Control-Allow-Origin': '*'
+    }
+  }).then(function (data) {
+    console.log(data);
+  }).catch(function (err) {
+    console.log('Fetch Error :-S', err);
+  });
+
+  // var xmlHttp = new XMLHttpRequest();
+  // xmlHttp.open("GET", "http://127.0.0.1:5000?" + data, false); // false for synchronous request
+  // xmlHttp.setRequestHeader('Content-type', 'application/json')
+  // xmlHttp.setRequestHeader('X-Requested-With', 'XMLHttpRequest');
+  // xmlHttp.setRequestHeader('Access-Control-Allow-Origin', '*');
+  // xmlHttp.send(null);
+  // console.log(xmlHttp.responseText);
 }
 
 function drawFields(name) {
