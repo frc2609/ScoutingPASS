@@ -8,14 +8,13 @@ var config_data = `
       "code": "s",
       "type": "scouter",
       "size": 5,
-      "maxSize": 5
+      "maxSize": 5,
+      "required": "true"
     },
     { "name": "Event",
       "code": "e",
       "type": "event",
-      "defaultValue": "2023bcvi",
-      "required": "true",
-      "disabled": "true"
+      "required": "true"
     },
     { "name": "Match Level",
       "code": "l",
