@@ -842,6 +842,7 @@ function validateData() {
 function getData(useStr) {
   var str = ''
   var fd = new FormData()
+  var delim = '&'
   var rep = ''
   var start = true
   var checkedChar = 'Y'
@@ -861,7 +862,7 @@ function getData(useStr) {
     if (radio > -1) {
       if (e.checked) {
         if (start == false) {
-          str = str + ';'
+          str = str + delim
         } else {
           start = false
         }
@@ -876,7 +877,7 @@ function getData(useStr) {
       }
     } else {
       if (start == false) {
-        str = str + ';'
+        str = str + delim
       } else {
         start = false
       }
@@ -896,12 +897,13 @@ function getData(useStr) {
         }
       } else {
         if (e.className == "cycle") {
-          e = document.getElementById("cycletime_" + code);
+          e = document.getElementById("cycletime_" + code)
         }
+        let val = e.value.split(delim).join('-').replace(/"/g, '')
         if (useStr) {
-          str = str + code + '=' + e.value.split(';').join('-')
+          str = str + code + '=' + val
         } else {
-          fd.append(name, e.value.split(';').join('-'))
+          fd.append(name, val)
         }
       }
     }
@@ -943,9 +945,10 @@ function qr_regenerate() {
 
   // Get data
   data = getData(true)
+  console.log(data)
 
   // Regenerate QR Code
-  qr.makeCode(data)
+  qr.makeCode("http://165.232.156.59:3010?" + data)
 
   updateQRHeader()
   return true
