@@ -14,14 +14,16 @@ var config_data = `
     { "name": "Event",
       "code": "e",
       "type": "event",
-      "required": "true"
+      "defaultValue": "2023ilch",
+      "required": "true",
+      "disabled": "true"
     },
     { "name": "Match Level",
       "code": "l",
       "type": "level",
       "choices": {
         "qm": "Quals<br>",
-        "de": "Double Elimination<br>",
+        "sf": "Semifinals<br>",
         "f": "Finals"
       },
       "defaultValue": "qm",
@@ -98,10 +100,6 @@ var config_data = `
     }
   ],
   "teleop": [
-    { "name": "Cycle Timer",
-      "code": "tct",
-      "type": "cycle"
-    },
     { "name": "Grid Scoring",
       "code": "tg",
       "type": "clickable_image",
@@ -111,8 +109,7 @@ var config_data = `
       "toggleClick": "true",
       "showFlip": "false",
       "showUndo": "false",
-      "shape": "circle 12 black red true",
-      "cycleTimer": "tct"
+      "shape": "circle 12 black red true"
     },
     { "name": "Floor Pickup",
       "code": "tft",
@@ -164,6 +161,17 @@ var config_data = `
     { "name": "Smart Placement<br>(creates Links)",
       "code": "tl",
       "type": "bool"
+    },
+    { "name": "Substation Use",
+      "code": "sub",
+      "type": "radio",
+      "choices": {
+        "1": "Single<br>",
+        "2": "Double<br>",
+        "b": "Both<br>",
+        "x": "Not Attempted"
+      },
+      "defaultValue": "x"
     }
   ],
   "endgame": [
@@ -181,6 +189,10 @@ var config_data = `
     },
     { "name": "Total # of alliance<br>robots docked/engaged",
       "code": "egc",
+      "type": "counter"
+    },
+    { "name": "Links Scored<br>(by alliance)",
+      "code": "ls",
       "type": "counter"
     }
   ],
@@ -268,7 +280,7 @@ var config_data = `
       "code": "co",
       "type": "text",
       "size": 15,
-      "maxSize": 50
+      "maxSize": 55
     }
   ]
 }`;
