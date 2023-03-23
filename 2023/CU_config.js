@@ -117,7 +117,8 @@ var config_data = `
       "toggleClick": "true",
       "showFlip": "false",
       "showUndo": "false",
-      "shape": "circle 12 black red true"
+      "shape": "circle 12 black red true",
+      "cycleTimer": "tct"
     },
     { "name": "Floor Pickup",
       "code": "tft",

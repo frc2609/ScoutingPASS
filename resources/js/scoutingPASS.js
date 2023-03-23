@@ -1127,7 +1127,14 @@ function swipePage(increment) {
 
 async function submitData() {
   data = getData(true)
-  await fetch("http://165.232.156.59/insert?" + data, {
+  debug = false
+  if (!debug) {
+    url = "http://165.232.156.59/insert?"
+  } else {
+    url = "http://127.0.0.1:5000/insert?"
+  }
+
+  await fetch(url + data, {
     method: "GET",
     mode: 'no-cors',
     headers: {
