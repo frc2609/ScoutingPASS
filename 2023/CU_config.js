@@ -100,6 +100,10 @@ var config_data = `
     }
   ],
   "teleop": [
+    { "name": "Cycle Timer",
+      "code": "tct",
+      "type": "cycle"
+    },
     { "name": "Grid Scoring",
       "code": "tg",
       "type": "clickable_image",
@@ -135,7 +139,11 @@ var config_data = `
     "type": "counter"
     },
     { "name": "Was Fed<br>Game Pieces?",
-      "code": "tfq",
+      "code": "wf",
+      "type": "bool"
+    },
+    { "name": "Did Feeding Of<br>Game Pieces?",
+      "code": "df",
       "type": "bool"
     },
     { "name": "Was Defended?",

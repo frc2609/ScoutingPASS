@@ -875,7 +875,6 @@ function getData(useStr) {
     code = e.id.substring(6)
     name = e.name
     radio = code.indexOf("_")
-    console.log(name)
     if (name == 'co') {
       if (start == false) {
         str = str + delim
@@ -1120,9 +1119,9 @@ function swipePage(increment) {
   }
 }
 
-function submitData() {
+async function submitData() {
   data = getData(true)
-  fetch("http://165.232.156.59/insert?" + data, {
+  await fetch("http://165.232.156.59/insert?" + data, {
     method: "GET",
     mode: 'no-cors',
     headers: {
@@ -1130,9 +1129,11 @@ function submitData() {
       'Access-Control-Allow-Origin': '*'
     }
   }).then(function (data) {
-    console.log(data);
+    console.log("Sent");
+    clearForm()
   }).catch(function (err) {
     console.log('Fetch Error :-S', err);
+    alert("Failed to submit, please scan QR\n");
   });
 
   // var xmlHttp = new XMLHttpRequest();
