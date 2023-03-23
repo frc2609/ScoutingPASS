@@ -14,7 +14,7 @@ var config_data = `
     { "name": "Event",
       "code": "e",
       "type": "event",
-      "defaultValue": "2023ilch",
+      "defaultValue": "2023onwat",
       "required": "true",
       "disabled": "true"
     },
@@ -138,10 +138,6 @@ var config_data = `
       "code": "tfq",
       "type": "bool"
     },
-    { "name": "# of FEED to other bot",
-    "code": "tfc",
-    "type": "counter"
-    },
     { "name": "Was Defended?",
       "code": "tdq",
       "type": "bool"
@@ -150,28 +146,9 @@ var config_data = `
       "code": "tdb",
       "type": "text"
     },
-    { "name": "Defended others?",
-      "code": "tdo",
-      "type": "bool"
-    },
-    { "name": "Who did this bot Defend?<br>(sepparate with commas no spaces)",
-      "code": "tda",
-      "type": "text"
-    },
     { "name": "Smart Placement<br>(creates Links)",
       "code": "tl",
       "type": "bool"
-    },
-    { "name": "Substation Use",
-      "code": "sub",
-      "type": "radio",
-      "choices": {
-        "1": "Single<br>",
-        "2": "Double<br>",
-        "b": "Both<br>",
-        "x": "Not Attempted"
-      },
-      "defaultValue": "x"
     }
   ],
   "endgame": [
@@ -189,10 +166,6 @@ var config_data = `
     },
     { "name": "Total # of alliance<br>robots docked/engaged",
       "code": "egc",
-      "type": "counter"
-    },
-    { "name": "Links Scored<br>(by alliance)",
-      "code": "ls",
       "type": "counter"
     }
   ],
@@ -225,18 +198,6 @@ var config_data = `
         "g": "Good<br>",
         "e": "Excellent<br>",
         "x": "Did not play defense"
-      },
-      "defaultValue": "x"
-    },
-    { "name": "defendability Rating",
-      "code": "dar",
-      "type": "radio",
-      "choices": {
-        "e": "Easily defendable<br>",
-        "a": "Average<br>",
-        "h": "Hard to defend<br>",
-        "i": "Near impossible<br>",
-        "x": "Did not observe"
       },
       "defaultValue": "x"
     },
