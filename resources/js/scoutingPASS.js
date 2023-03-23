@@ -841,7 +841,7 @@ function validateData() {
         ret = false
       }
       // Normal validation (length <> 0)
-    } else if (document.getElementById("input_" + rf).value == "[]") {
+    } else if (document.getElementById("input_" + rf).value == "[]" && document.getElementById("input_ns").checked == false) {
       errStr += rf + " ";
       ret = false;
     } else if (document.getElementById("input_" + rf).value.length == 0) {
@@ -1108,15 +1108,21 @@ function moveTouch(e) {
 function swipePage(increment) {
   if (qr_regenerate() == true) {
     slides = document.getElementById("main-panel-holder").children
+
     if (slide + increment < slides.length && slide + increment >= 0) {
       slides[slide].style.display = "none";
-      slide += increment;
+      if (slide == 0 && document.getElementById("input_ns").checked == true) {
+        slide = slides.length - 1
+      } else {
+        slide += increment;
+      }
       window.scrollTo(0, 0);
       slides[slide].style.display = "table";
       document.getElementById('data').innerHTML = "";
       document.getElementById('copyButton').setAttribute('value', 'Copy Data');
     }
   }
+
 }
 
 async function submitData() {

@@ -55,6 +55,10 @@ var config_data = `
       "min": 1,
       "max": 99999
     },
+    { "name": "No Show",
+      "code": "ns",
+      "type": "bool"
+    },
     { "name": "Auto Start Position",
       "code": "as",
       "type": "clickable_image",
