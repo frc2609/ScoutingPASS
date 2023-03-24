@@ -1189,7 +1189,7 @@ async function submitData() {
 
 async function submitPitData() {
   data = getData(true)
-  debug = true
+  debug = false
   if (!debug) {
     url = "http://165.232.156.59/p_insert?"
   } else {
