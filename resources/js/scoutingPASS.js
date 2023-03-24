@@ -1111,7 +1111,7 @@ function swipePage(increment) {
 
     if (slide + increment < slides.length && slide + increment >= 0) {
       slides[slide].style.display = "none";
-      if (slide == 0 && document.getElementById("input_ns").checked == true) {
+      if (!pitScouting && slide == 0 && document.getElementById("input_ns").checked == true) {
         slide = slides.length - 1
       } else {
         slide += increment;
