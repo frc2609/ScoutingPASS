@@ -24,7 +24,7 @@ var options = {
 // Must be filled in: e=event, m=match#, l=level(q,qf,sf,f), t=team#, r=robot(r1,r2,b1..), s=scouter
 //var requiredFields = ["e", "m", "l", "t", "r", "s", "as"];
 var requiredFields = ["e", "m", "l", "r", "s", "as", "t"];
-
+var requiredPitFields = ["t"]
 function addTimer(table, idx, name, data) {
   var row = table.insertRow(idx);
   var cell1 = row.insertCell(0);
@@ -855,6 +855,36 @@ function validateData() {
   return ret
 }
 
+function validatePitData() {
+  var ret = true
+  var errStr = "Bad fields: ";
+  for (rf of requiredPitFields) {
+    // Robot requires special (radio) validation
+    if (rf == "r") {
+      if (!validateRobot()) {
+        errStr += rf + " "
+        ret = false
+      }
+    } else if (rf == "l") {
+      if (!validateLevel()) {
+        errStr += rf + " "
+        ret = false
+      }
+      // Normal validation (length <> 0)
+    } else if (document.getElementById("input_" + rf).value == "[]" && document.getElementById("input_ns").checked == false) {
+      errStr += rf + " ";
+      ret = false;
+    } else if (document.getElementById("input_" + rf).value.length == 0) {
+      errStr += rf + " "
+      ret = false
+    }
+  }
+  if (ret == false) {
+    alert("Enter all required values\n" + errStr);
+  }
+  return ret
+}
+
 function getData(useStr) {
   var str = ''
   var fd = new FormData()
@@ -968,6 +998,10 @@ function qr_regenerate() {
   if (!pitScouting) {
     if (validateData() == false) {
       // Don't allow a swipe until all required data is filled in
+      return false
+    }
+  } else {
+    if (validatePitData() == false) {
       return false
     }
   }
@@ -1141,21 +1175,47 @@ async function submitData() {
       'Content-Type': 'application/json',
       'Access-Control-Allow-Origin': '*'
     }
-  }).then(function (data) {
+  }).then(function (response) {
+    if (!response.ok) {
+      throw new Error("HTTP status " + response.status);
+    }
     console.log("Sent");
     clearForm()
   }).catch(function (err) {
     console.log('Fetch Error :-S', err);
     alert("Failed to submit, please scan QR\n");
   });
+}
 
-  // var xmlHttp = new XMLHttpRequest();
-  // xmlHttp.open("GET", "http://127.0.0.1:5000?" + data, false); // false for synchronous request
-  // xmlHttp.setRequestHeader('Content-type', 'application/json')
-  // xmlHttp.setRequestHeader('X-Requested-With', 'XMLHttpRequest');
-  // xmlHttp.setRequestHeader('Access-Control-Allow-Origin', '*');
-  // xmlHttp.send(null);
-  // console.log(xmlHttp.responseText);
+async function submitPitData() {
+  data = getData(true)
+  debug = true
+  if (!debug) {
+    url = "http://165.232.156.59/p_insert?"
+  } else {
+    url = "http://127.0.0.1:5000/p_insert?"
+  }
+
+  response = await fetch(url + data, {
+    method: "GET",
+    mode: 'no-cors',
+    headers: {
+      'Content-Type': 'application/json',
+      'Access-Control-Allow-Origin': '*'
+    }
+  })
+
+  console.log(response)
+  // .then(function (response) {
+  //   if (!response.ok) {
+  //     throw new Error("HTTP status " + response.status);
+  //   }
+  //   console.log("Sent");
+  //   clearForm()
+  // }).catch(function (err) {
+  //   console.log('Fetch Error :-S', err);
+  //   alert("Failed to submit, please scan QR\n");
+  // });
 }
 
 function drawFields(name) {

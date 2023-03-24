@@ -4,9 +4,21 @@ var config_data = `
   "page_title": "Charged Up",
   "pitConfig": "true",
   "prematch": [
+    { "name": "Event",
+      "code": "e",
+      "type": "event",
+      "defaultValue": "2023onwat",
+      "required": "true",
+      "disabled": "true"
+    },
     { "name": "Team Number",
       "code": "t",
       "type": "number"
+    },
+    { "name": "Length",
+      "code": "len",
+      "type": "number",
+      "defaultValue": "0"
     },
     { "name": "Width",
       "code": "wid",
@@ -23,9 +35,8 @@ var config_data = `
       "type": "radio",
       "choices": {
         "s": "Swerve<br>",
-        "w": "West Coast/Tank<br>",
-        "b": "Butterfly/Grashopper<br>",
-        "m": "Mechanum<br>",
+        "w": "Tank<br>",
+        "m": "Mechanum/Holonomic<br>",
         "o": "Other"
       },
       "defaultValue": "o"
@@ -36,41 +47,27 @@ var config_data = `
       "size": 20,
       "maxSize": 50
     },
-    { "name": "Swerve Ratio",
-      "code": "sr",
+    { "name": "Primary station",
+      "code": "ps",
       "type": "radio",
       "choices": {
-        "1": "L1 (8.14:1)<br>",
-        "2": "L2 (6.75:1)<br>",
-        "3": "L3 (6.12:1)<br>",
-        "4": "L4 (5.14:1)<br>",
-        "o": "Other ratio (put in comments)<br>",
-        "x": "Not Swerve"
+        "s": "Single<br>",
+        "d": "Double<br>",
+        "b": "Both<br>",
+        "x": "None"
       },
-      "defaultValue":"x"
+      "defaultValue": "x"
     },
-    { "name": "Drivetrain Motor",
-      "code": "mot",
+    { "name": "Floor Pickup",
+      "code": "fp",
       "type": "radio",
       "choices": {
-        "n": "Neo<br>",
-        "f": "Falcon<br>",
-        "c": "CIM<br>",
-        "x": "Other<br>"
+        "s": "Cube<br>",
+        "d": "Cone<br>",
+        "b": "Both<br>",
+        "x": "None"
       },
-      "defaultValue":"x"
-    },
-    { "name": "# of Batteries",
-      "code": "nob",
-      "type": "number"
-    },
-    { "name": "Floor pickup Cones",
-      "code": "fco",
-      "type": "bool"
-    },
-    { "name": "Floor pickup Cubes",
-      "code": "fcu",
-      "type": "bool"
+      "defaultValue": "x"
     },
     { "name": "Cross Charging Station",
       "code": "ccs",
