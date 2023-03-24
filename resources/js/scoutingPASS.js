@@ -1203,19 +1203,16 @@ async function submitPitData() {
       'Content-Type': 'application/json',
       'Access-Control-Allow-Origin': '*'
     }
-  })
-
-  console.log(response)
-  // .then(function (response) {
-  //   if (!response.ok) {
-  //     throw new Error("HTTP status " + response.status);
-  //   }
-  //   console.log("Sent");
-  //   clearForm()
-  // }).catch(function (err) {
-  //   console.log('Fetch Error :-S', err);
-  //   alert("Failed to submit, please scan QR\n");
-  // });
+  }).then(function (response) {
+    if (!response.ok) {
+      throw new Error("HTTP status " + response.status);
+    }
+    console.log("Sent");
+    clearForm()
+  }).catch(function (err) {
+    console.log('Fetch Error :-S', err);
+    alert("Failed to submit, please scan QR\n");
+  });
 }
 
 function drawFields(name) {
