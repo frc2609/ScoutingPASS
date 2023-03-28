@@ -1175,24 +1175,23 @@ async function submitData() {
     url = "http://127.0.0.1:5000/insert?"
   }
 
-  console.log(data)
-  // await fetch(url + data, {
-  //   method: "GET",
-  //   mode: 'no-cors',
-  //   headers: {
-  //     'Content-Type': 'application/json',
-  //     'Access-Control-Allow-Origin': '*'
-  //   }
-  // }).then(function (response) {
-  //   if (!response.ok) {
-  //     throw new Error("HTTP status " + response.status);
-  //   }
-  //   console.log("Sent");
-  //   clearForm()
-  // }).catch(function (err) {
-  //   console.log('Fetch Error :-S', err);
-  //   alert("Failed to submit, please scan QR\n");
-  // });
+  await fetch(url + data, {
+    method: "GET",
+    mode: 'no-cors',
+    headers: {
+      'Content-Type': 'application/json',
+      'Access-Control-Allow-Origin': '*'
+    }
+  }).then(function (response) {
+    if (!response.ok) {
+      throw new Error("HTTP status " + response.status);
+    }
+    console.log("Sent");
+    clearForm()
+  }).catch(function (err) {
+    console.log('Fetch Error :-S', err);
+    alert("Failed to submit, please scan QR\n");
+  });
 }
 
 async function submitPitData() {
