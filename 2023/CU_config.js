@@ -24,7 +24,8 @@ var config_data = `
       "choices": {
         "qm": "Quals<br>",
         "sf": "Semifinals<br>",
-        "f": "Finals"
+        "f": "Finals<br>",
+        "t": "test"
       },
       "defaultValue": "qm",
       "required": "true"
@@ -82,25 +83,6 @@ var config_data = `
     { "name": "Crossed Charging Station",
       "code": "axc",
       "type": "bool"
-    },
-    { "name": "Mobility?",
-      "code": "am",
-      "type": "bool"
-    },
-    { "name": "# of FLOOR pickup",
-    "code": "afp",
-    "type": "counter"
-    },
-    { "name": "Docked",
-      "code": "ad",
-      "type":"radio",
-      "choices": {
-        "d": "Docked (not Engaged)<br>",
-        "e": "Engaged<br>",
-        "a": "Attempted but failed<br>",
-        "x": "Not attempted"
-      },
-      "defaultValue": "x"
     }
   ],
   "teleop": [
@@ -131,55 +113,9 @@ var config_data = `
       },
       "defaultValue": "x"
     },
-    { "name": "# of FLOOR pickup",
-    "code": "tfp",
-    "type": "counter"
-    },
-    { "name": "# of SHELF pickup",
-    "code": "tsc",
-    "type": "counter"
-    },
-    { "name": "# of RAMP pickup",
-    "code": "trc",
-    "type": "counter"
-    },
-    { "name": "Was Fed<br>Game Pieces?",
-      "code": "wf",
-      "type": "bool"
-    },
-    { "name": "Did Feeding Of<br>Game Pieces?",
-      "code": "df",
-      "type": "bool"
-    },
-    { "name": "Was Defended?",
-      "code": "tdq",
-      "type": "bool"
-    },
-    { "name": "Who Defended this bot?<br>(sepparate with commas no spaces)",
+    { "name": "If defended who defended this bot?<br>(sepparate with commas no spaces)",
       "code": "tdb",
       "type": "text"
-    },
-    { "name": "Smart Placement<br>(creates Links)",
-      "code": "tl",
-      "type": "bool"
-    }
-  ],
-  "endgame": [
-    { "name": "Final Status",
-      "code": "fs",
-      "type":"radio",
-      "choices": {
-        "p": "Parked<br>",
-        "d": "Docked (Not Engaged)<br>",
-        "e": "Engaged<br>",
-        "a": "Attempted but failed<br>",
-        "x": "Not attempted"
-      },
-      "defaultValue": "x"
-    },
-    { "name": "Total # of alliance<br>robots docked/engaged",
-      "code": "egc",
-      "type": "counter"
     }
   ],
   "postmatch": [
@@ -191,26 +127,6 @@ var config_data = `
         "a": "Average<br>",
         "v": "Very Effective<br>",
         "x": "Not Observed"
-      },
-      "defaultValue": "x"
-    },
-    { "name": "Received RED card",
-    "code": "rc",
-    "type": "counter"
-    },
-    { "name": "Received YELLOW card",
-      "code": "yc",
-      "type": "counter"
-    },
-    { "name": "Defense Rating",
-      "code": "dr",
-      "type": "radio",
-      "choices": {
-        "b": "Below Average<br>",
-        "a": "Average<br>",
-        "g": "Good<br>",
-        "e": "Excellent<br>",
-        "x": "Did not play defense"
       },
       "defaultValue": "x"
     },
@@ -226,10 +142,6 @@ var config_data = `
       },
       "defaultValue":"3"
     },
-    { "name": "Died/Immobilized",
-      "code": "ded",
-      "type": "bool"
-    },
     { "name": "Tippy?",
       "code": "tip",
       "type": "radio",
@@ -241,8 +153,9 @@ var config_data = `
       },
       "defaultValue":"1"
     },
-    { "name": "Dropped Cones (>2)",
-      "code": "cd",
+    { "name": "Do they make good<br>defence bot?",
+      "tooltip": "Did they defend against other bots?",
+      "code": "def",
       "type": "bool"
     },
     { "name": "Do they make good<br>alliance partner?",
@@ -250,6 +163,10 @@ var config_data = `
       "code": "ali",
       "type": "bool"
     },
+    { "name": "Died/Immobilized",
+      "code": "ded",
+      "type": "bool"
+    },  
     { "name": "Other comments",
       "code": "co",
       "type": "text",

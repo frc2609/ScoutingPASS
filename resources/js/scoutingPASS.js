@@ -725,12 +725,12 @@ function configure() {
   });
 
   // Configure endgame screen
-  var egc = mydata.endgame;
-  var egt = document.getElementById("endgame_table");
-  idx = 0;
-  egc.forEach(element => {
-    idx = addElement(egt, idx, element);
-  });
+  // var egc = mydata.endgame;
+  // var egt = document.getElementById("endgame_table");
+  // idx = 0;
+  // egc.forEach(element => {
+  //   idx = addElement(egt, idx, element);
+  // });
 
   // Configure postmatch screen
   pmc = mydata.postmatch;
@@ -805,19 +805,22 @@ function resetRobot() {
 function getLevel() {
   if (document.getElementById("input_l_qm").checked) {
     return "qm";
-  } else if (document.getElementById("input_l_de").checked) {
+  } else if (document.getElementById("input_l_sf").checked) {
     return "de";
   } else if (document.getElementById("input_l_f").checked) {
     return "f";
-  } else {
+  } else if (document.getElementById("input_l_t").checked) {
+    return "t";
+  }else {
     return "";
   }
 }
 
 function validateLevel() {
   if (document.getElementById("input_l_qm").checked ||
-    document.getElementById("input_l_de").checked ||
-    document.getElementById("input_l_f").checked
+    document.getElementById("input_l_sf").checked ||
+    document.getElementById("input_l_f").checked ||
+    document.getElementById("input_l_t").checked
   ) {
     return true
   } else {
@@ -1154,6 +1157,10 @@ function swipePage(increment) {
       slides[slide].style.display = "table";
       document.getElementById('data').innerHTML = "";
       document.getElementById('copyButton').setAttribute('value', 'Copy Data');
+
+      if(!pitScouting && slide == 2) {
+        timer(document.getElementById('start_tct').parentElement)
+      }
     }
   }
 
@@ -1168,23 +1175,24 @@ async function submitData() {
     url = "http://127.0.0.1:5000/insert?"
   }
 
-  await fetch(url + data, {
-    method: "GET",
-    mode: 'no-cors',
-    headers: {
-      'Content-Type': 'application/json',
-      'Access-Control-Allow-Origin': '*'
-    }
-  }).then(function (response) {
-    if (!response.ok) {
-      throw new Error("HTTP status " + response.status);
-    }
-    console.log("Sent");
-    clearForm()
-  }).catch(function (err) {
-    console.log('Fetch Error :-S', err);
-    alert("Failed to submit, please scan QR\n");
-  });
+  console.log(data)
+  // await fetch(url + data, {
+  //   method: "GET",
+  //   mode: 'no-cors',
+  //   headers: {
+  //     'Content-Type': 'application/json',
+  //     'Access-Control-Allow-Origin': '*'
+  //   }
+  // }).then(function (response) {
+  //   if (!response.ok) {
+  //     throw new Error("HTTP status " + response.status);
+  //   }
+  //   console.log("Sent");
+  //   clearForm()
+  // }).catch(function (err) {
+  //   console.log('Fetch Error :-S', err);
+  //   alert("Failed to submit, please scan QR\n");
+  // });
 }
 
 async function submitPitData() {
