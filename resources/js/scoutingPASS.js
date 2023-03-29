@@ -811,7 +811,7 @@ function getLevel() {
     return "f";
   } else if (document.getElementById("input_l_t").checked) {
     return "t";
-  }else {
+  } else {
     return "";
   }
 }
@@ -1030,7 +1030,7 @@ function clearForm() {
   if (pitScouting) {
     swipePage(-1);
   } else {
-    swipePage(-5);
+    swipePage(-4);
 
     // Increment match
     match = parseInt(document.getElementById("input_m").value)
@@ -1158,7 +1158,7 @@ function swipePage(increment) {
       document.getElementById('data').innerHTML = "";
       document.getElementById('copyButton').setAttribute('value', 'Copy Data');
 
-      if(!pitScouting && slide == 2) {
+      if (!pitScouting && slide == 2) {
         timer(document.getElementById('start_tct').parentElement)
       }
     }
