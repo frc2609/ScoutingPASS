@@ -25,7 +25,7 @@ var config_data = `
         "qm": "Quals<br>",
         "sf": "Semifinals<br>",
         "f": "Finals<br>",
-        "t": "test"
+        "t": "Practice"
       },
       "defaultValue": "qm",
       "required": "true"
@@ -123,10 +123,11 @@ var config_data = `
       "code": "ds",
       "type": "radio",
       "choices": {
-        "n": "Not Effective<br>",
-        "a": "Average<br>",
-        "v": "Very Effective<br>",
-        "x": "Not Observed"
+        "1": "Not Effective<br>",
+        "2": "Below Average<br>",
+        "3": "Average<br>",
+        "4": "Above Average<br>",
+        "5": "Very Effective<br>"
       },
       "defaultValue": "x"
     },
@@ -134,11 +135,11 @@ var config_data = `
       "code": "sr",
       "type": "radio",
       "choices": {
-        "1": "1 (slow)<br>",
-        "2": "2 (below avg)<br>",
-        "3": "3 (average)<br>",
-        "4": "4 (above avg)<br>",
-        "5": "5 (fast)"
+        "1": "Very Slow<br>",
+        "2": "Slow<br>",
+        "3": "Average<br>",
+        "4": "Fast<br>",
+        "5": "Very Fast"
       },
       "defaultValue":"3"
     },
@@ -146,10 +147,11 @@ var config_data = `
       "code": "tip",
       "type": "radio",
       "choices": {
-        "1": "1 (not tippy)<br>",
-        "2": "2 (tippy)<br>",
-        "3": "3 (very tippy)<br>",
-        "4": "4 (tipped over)"
+        "1": "Very Stable<br>",
+        "2": "Stable<br>",
+        "3": "Average<br>",
+        "4": "tippy<br>",
+        "5": "Very tippy"
       },
       "defaultValue":"1"
     },
