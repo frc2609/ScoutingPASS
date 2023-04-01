@@ -129,7 +129,7 @@ var config_data = `
         "4": "Above Average<br>",
         "5": "Very Effective<br>"
       },
-      "defaultValue": "x"
+      "defaultValue": "3"
     },
     { "name": "Speed Rating",
       "code": "sr",
@@ -150,10 +150,10 @@ var config_data = `
         "1": "Very Stable<br>",
         "2": "Stable<br>",
         "3": "Average<br>",
-        "4": "tippy<br>",
+        "4": "Tippy<br>",
         "5": "Very tippy"
       },
-      "defaultValue":"1"
+      "defaultValue":"3"
     },
     { "name": "Do they make good<br>defence bot?",
       "tooltip": "Did they defend against other bots?",
