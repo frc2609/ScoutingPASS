@@ -14,7 +14,7 @@ var config_data = `
     { "name": "Event",
       "code": "e",
       "type": "event",
-      "defaultValue": "testing",
+      "defaultValue": "2023onham",
       "required": "true",
       "disabled": "true"
     },
