@@ -14,7 +14,7 @@ var config_data = `
     { "name": "Event",
       "code": "e",
       "type": "event",
-      "defaultValue": "2023nytr",
+      "defaultValue": "2023onham",
       "required": "true",
       "disabled": "true"
     },
