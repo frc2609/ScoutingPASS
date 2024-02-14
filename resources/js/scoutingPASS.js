@@ -22,7 +22,8 @@ var options = {
 
 // Must be filled in: e=event, m=match#, l=level(q,qf,sf,f), t=team#, r=robot(r1,r2,b1..), s=scouter
 //var requiredFields = ["e", "m", "l", "t", "r", "s", "as"];
-var requiredFields = ["e", "m", "l", "r", "s", "as"];
+// var requiredFields = ["e", "m", "l", "r", "s", "as"];
+var requiredFields = [];
 var usingTBA = true;
 
 function addTimer(table, idx, name, data) {
@@ -706,12 +707,12 @@ function configure() {
   });
 
   // Configure endgame screen
-  var egc = mydata.endgame;
-  var egt = document.getElementById("endgame_table");
-  idx = 0;
-  egc.forEach(element => {
-    idx = addElement(egt, idx, element);
-  });
+  // var egc = mydata.endgame;
+  // var egt = document.getElementById("endgame_table");
+  // idx = 0;
+  // egc.forEach(element => {
+  //   idx = addElement(egt, idx, element);
+  // });
 
   // Configure postmatch screen
   pmc = mydata.postmatch;

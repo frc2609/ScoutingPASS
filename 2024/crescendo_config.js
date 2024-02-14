@@ -55,6 +55,10 @@ var config_data = `
       "min": 1,
       "max": 99999
     },
+    { "name": "No Show",
+      "code": "nit",
+      "type": "bool"
+    },
     { "name": "Auto Start Position",
       "code": "as",
       "type": "clickable_image",
@@ -79,6 +83,11 @@ var config_data = `
     }
   ],
   "teleop": [
+    { "name": "Shooting Spot",
+    "code": "ss",
+    "type": "field_image",
+    "filename": "2024/field_image.png"
+    },
     { "name": "Amp Scores",
       "code": "tas",
       "type": "counter"
@@ -87,39 +96,24 @@ var config_data = `
       "code": "tss",
       "type": "counter"
     },
-    { "name": "Times Amplified",
+    { "name": "Missed",
       "code": "tta",
       "type": "counter"
     },
-    { "name": "Pickup From",
-      "code": "tpu",
+    { "name": "Floor Pickup",
+      "code": "fpu",
       "type": "radio",
       "choices": {
-        "s": "Source<br>",
-        "f": "Floor<br>",
+        "o": "Cones<br>",
+        "u": "Cubes<br>",
         "b": "Both<br>",
         "x": "Not Attempted"
       },
       "defaultValue": "x"
-    }
-  ],
-  "endgame": [
+    },
     { "name": "Stage Timer",
       "code": "dt",
       "type": "timer"
-    },
-    { "name": "Final Status",
-      "code": "fs",
-      "type":"radio",
-      "choices": {
-        "p": "Parked<br>",
-        "o": "Onstage<br>",
-        "s": "Onstage (Spotlit)<br>",
-        "h": "Harmony<br>",
-        "a": "Attempted but failed<br>",
-        "x": "Not attempted"
-      },
-      "defaultValue": "x"
     },
     { "name": "Note in Trap",
       "code": "nit",
@@ -132,11 +126,11 @@ var config_data = `
       "type": "radio",
       "choices": {
         "n": "Not Effective<br>",
+        "b": "Below Average<br>",
         "a": "Average<br>",
-        "v": "Very Effective<br>",
-        "x": "Not Observed"
-      },
-      "defaultValue": "x"
+        "ab": "Above Average<br>",
+        "v": "Very Effective<br>"
+      }
     },
     { "name": "Defense Rating",
       "code": "dr",
@@ -145,22 +139,8 @@ var config_data = `
         "b": "Below Average<br>",
         "a": "Average<br>",
         "g": "Good<br>",
-        "e": "Excellent<br>",
-        "x": "Did not play defense"
-      },
-      "defaultValue": "x"
-    },
-    { "name": "Speed Rating",
-      "code": "sr",
-      "type": "radio",
-      "choices": {
-        "1": "1 (slow)<br>",
-        "2": "2<br>",
-        "3": "3<br>",
-        "4": "4<br>",
-        "5": "5 (fast)"
-      },
-      "defaultValue":"3"
+        "e": "Excellent<br>"
+      }
     },
     { "name": "Died/Immobilized",
       "code": "die",
@@ -170,7 +150,7 @@ var config_data = `
       "code": "tip",
       "type": "bool"
     },
-    { "name": "Dropped Notes (>2)",
+    { "name": "Dropped Notes (2+)",
       "code": "dn",
       "type": "bool"
     },
@@ -183,7 +163,7 @@ var config_data = `
       "code": "co",
       "type": "text",
       "size": 15,
-      "maxSize": 55
+      "maxSize": 550
     }
   ]
 }`;
