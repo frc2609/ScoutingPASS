@@ -15,7 +15,7 @@ var config_data = `
     { "name": "Event",
       "code": "e",
       "type": "event",
-      "defaultValue": "2023tnkn",
+      "defaultValue": "2024onnew",
       "required": "true"
     },
     { "name": "Match Level",
@@ -100,16 +100,9 @@ var config_data = `
       "code": "tta",
       "type": "counter"
     },
-    { "name": "Floor Pickup",
-      "code": "fpu",
-      "type": "radio",
-      "choices": {
-        "o": "Cones<br>",
-        "u": "Cubes<br>",
-        "b": "Both<br>",
-        "x": "Not Attempted"
-      },
-      "defaultValue": "x"
+    { "name": "Fed Pieces",
+      "code": "fp",
+      "type": "counter"
     },
     { "name": "Stage Timer",
       "code": "dt",
@@ -141,6 +134,10 @@ var config_data = `
         "g": "Good<br>",
         "e": "Excellent<br>"
       }
+    },
+    { "name": "Failed climb",
+      "code": "fallen",
+      "type": "bool"
     },
     { "name": "Died/Immobilized",
       "code": "die",
