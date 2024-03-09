@@ -949,7 +949,7 @@ function qr_regenerate() {
   console.log(data)
 
   // Regenerate QR Code
-  qr.makeCode("http://165.232.156.59:3010?" + data)
+  qr.makeCode("http://165.232.156.59/insert?" + data)
 
   updateQRHeader()
   return true
@@ -963,7 +963,7 @@ function clearForm() {
   var match = 0;
   var e = 0;
 
-  swipePage(-5)
+  swipePage(-4)
 
   // Increment match
   match = parseInt(document.getElementById("input_m").value)
