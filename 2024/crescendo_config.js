@@ -98,16 +98,9 @@ var config_data = `
       "code": "tta",
       "type": "counter"
     },
-    { "name": "Floor Pickup",
-      "code": "fpu",
-      "type": "radio",
-      "choices": {
-        "o": "Cones<br>",
-        "u": "Cubes<br>",
-        "b": "Both<br>",
-        "x": "Not Attempted"
-      },
-      "defaultValue": "x"
+    { "name": "Fed Pieces",
+      "code": "fp",
+      "type": "counter"
     },
     { "name": "Stage Timer",
       "code": "dt",
@@ -144,6 +137,10 @@ var config_data = `
         "x": "Not Observed"
       },
       "defaultValue": "x"
+    },
+    { "name": "Failed climb",
+      "code": "fallen",
+      "type": "bool"
     },
     { "name": "Died/Immobilized",
       "code": "die",

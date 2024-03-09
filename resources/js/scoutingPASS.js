@@ -1006,6 +1006,7 @@ function clearForm() {
         e.checked = false
         document.getElementById("display_" + baseCode).value = ""
       }
+      console.log(document.getElementById("default_" + baseCode).value)
       var defaultValue = document.getElementById("default_" + baseCode).value
       if (defaultValue != "") {
         if (defaultValue == e.value) {
