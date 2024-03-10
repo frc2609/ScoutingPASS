@@ -103,9 +103,13 @@ var config_data = `
       "code": "fp",
       "type": "counter"
     },
-    { "name": "Stage Timer",
-      "code": "dt",
-      "type": "timer"
+    { "name": "Did they Successfully Climb?",
+      "code": "climb",
+      "type": "bool"
+    },
+    { "name": "Failed climb",
+      "code": "fallen",
+      "type": "bool"
     },
     { "name": "Note in Trap",
       "code": "nit",
@@ -138,10 +142,6 @@ var config_data = `
         "x": "Not Observed"
       },
       "defaultValue": "x"
-    },
-    { "name": "Failed climb",
-      "code": "fallen",
-      "type": "bool"
     },
     { "name": "Died/Immobilized",
       "code": "die",
