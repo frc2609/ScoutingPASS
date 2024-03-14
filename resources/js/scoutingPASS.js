@@ -788,7 +788,7 @@ function getLevel() {
   if (document.getElementById("input_l_qm").checked) {
     return "qm";
   } else if (document.getElementById("input_l_de").checked) {
-    return "de";
+    return "sf";
   } else if (document.getElementById("input_l_f").checked) {
     return "f";
   } else {

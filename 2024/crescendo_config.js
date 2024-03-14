@@ -15,7 +15,7 @@ var config_data = `
     { "name": "Event",
       "code": "e",
       "type": "event",
-      "defaultValue": "2024onosh",
+      "defaultValue": "2024casf",
       "required": "true",
       "disabled": "true"
     },
@@ -68,10 +68,6 @@ var config_data = `
     }
   ],
   "auton": [
-    { "name": "Leave Starting Zone",
-      "code": "al",
-      "type": "bool"
-    },
     { "name": "Amp Scores",
       "code": "aas",
       "type": "counter"
@@ -102,10 +98,6 @@ var config_data = `
     { "name": "Fed Pieces",
       "code": "fp",
       "type": "counter"
-    },
-    { "name": "Did Try/Successfully Climb?",
-      "code": "climb",
-      "type": "bool"
     },
     { "name": "Failed climb",
       "code": "fallen",
