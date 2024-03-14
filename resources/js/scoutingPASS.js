@@ -21,7 +21,7 @@ var options = {
 };
 
 // Must be filled in: e=event, m=match#, l=level(q,qf,sf,f), t=team#, r=robot(r1,r2,b1..), s=scouter
-//var requiredFields = ["e", "m", "l", "t", "r", "s", "as"];
+var requiredFields = ["e", "m", "l", "t", "r", "s", "as"];
 // var requiredFields = ["e", "m", "l", "r", "s", "as"];
 var requiredFields = [];
 var usingTBA = true;
@@ -949,7 +949,7 @@ function qr_regenerate() {
   console.log(data)
 
   // Regenerate QR Code
-  qr.makeCode("http://165.232.156.59:3010?" + data)
+  qr.makeCode("http://165.232.156.59/insert?" + data)
 
   updateQRHeader()
   return true
@@ -963,7 +963,7 @@ function clearForm() {
   var match = 0;
   var e = 0;
 
-  swipePage(-5)
+  swipePage(-4)
 
   // Increment match
   match = parseInt(document.getElementById("input_m").value)
@@ -1006,6 +1006,7 @@ function clearForm() {
         e.checked = false
         document.getElementById("display_" + baseCode).value = ""
       }
+      console.log(document.getElementById("default_" + baseCode).value)
       var defaultValue = document.getElementById("default_" + baseCode).value
       if (defaultValue != "") {
         if (defaultValue == e.value) {

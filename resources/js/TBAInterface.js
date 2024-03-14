@@ -39,6 +39,7 @@ function getSchedule(eventCode) {
 			if (this.readyState == 4 && this.status == 200) {
 				var response = this.responseText;
 				schedule = JSON.parse(response);
+				console.log(schedule)
 			}
 		};
 		// Send request

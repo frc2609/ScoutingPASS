@@ -15,8 +15,9 @@ var config_data = `
     { "name": "Event",
       "code": "e",
       "type": "event",
-      "defaultValue": "2023tnkn",
-      "required": "true"
+      "defaultValue": "2024casf",
+      "required": "true",
+      "disabled": "true"
     },
     { "name": "Match Level",
       "code": "l",
@@ -56,23 +57,17 @@ var config_data = `
       "max": 99999
     },
     { "name": "No Show",
-      "code": "nit",
+      "code": "no",
       "type": "bool"
     },
     { "name": "Auto Start Position",
       "code": "as",
-      "type": "clickable_image",
+      "type": "field_image",
       "filename": "2024/field_image.png",
-      "clickRestriction": "one",
-      "allowableResponses": "1 12 13 24 25 36 37 48 49 60 61 72",
-      "shape": "circle 5 black red true"
+      "clickRestriction": "one"
     }
   ],
   "auton": [
-    { "name": "Leave Starting Zone",
-      "code": "al",
-      "type": "bool"
-    },
     { "name": "Amp Scores",
       "code": "aas",
       "type": "counter"
@@ -83,8 +78,8 @@ var config_data = `
     }
   ],
   "teleop": [
-    { "name": "Shooting Spot",
-    "code": "ss",
+    { "name": "Successful Speaker Shot",
+    "code": "tsp",
     "type": "field_image",
     "filename": "2024/field_image.png"
     },
@@ -100,20 +95,13 @@ var config_data = `
       "code": "tta",
       "type": "counter"
     },
-    { "name": "Floor Pickup",
-      "code": "fpu",
-      "type": "radio",
-      "choices": {
-        "o": "Cones<br>",
-        "u": "Cubes<br>",
-        "b": "Both<br>",
-        "x": "Not Attempted"
-      },
-      "defaultValue": "x"
+    { "name": "Fed Pieces",
+      "code": "fp",
+      "type": "counter"
     },
-    { "name": "Stage Timer",
-      "code": "dt",
-      "type": "timer"
+    { "name": "Failed climb",
+      "code": "fallen",
+      "type": "bool"
     },
     { "name": "Note in Trap",
       "code": "nit",
@@ -129,18 +117,23 @@ var config_data = `
         "b": "Below Average<br>",
         "a": "Average<br>",
         "ab": "Above Average<br>",
-        "v": "Very Effective<br>"
-      }
+        "v": "Very Effective<br>",
+        "x": "Not Observed"
+      },
+      "defaultValue": "x"
     },
     { "name": "Defense Rating",
       "code": "dr",
       "type": "radio",
       "choices": {
+        "n": "Not Effective<br>",
         "b": "Below Average<br>",
         "a": "Average<br>",
-        "g": "Good<br>",
-        "e": "Excellent<br>"
-      }
+        "ab": "Above Average<br>",
+        "v": "Very Effective<br>",
+        "x": "Not Observed"
+      },
+      "defaultValue": "x"
     },
     { "name": "Died/Immobilized",
       "code": "die",
@@ -163,7 +156,7 @@ var config_data = `
       "code": "co",
       "type": "text",
       "size": 15,
-      "maxSize": 550
+      "maxSize": 100
     }
   ]
 }`;
