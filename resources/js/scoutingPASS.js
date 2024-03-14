@@ -707,12 +707,12 @@ function configure() {
   });
 
   // Configure endgame screen
-  // var egc = mydata.endgame;
-  // var egt = document.getElementById("endgame_table");
-  // idx = 0;
-  // egc.forEach(element => {
-  //   idx = addElement(egt, idx, element);
-  // });
+  var egc = mydata.endgame;
+  var egt = document.getElementById("endgame_table");
+  idx = 0;
+  egc.forEach(element => {
+    idx = addElement(egt, idx, element);
+  });
 
   // Configure postmatch screen
   pmc = mydata.postmatch;
@@ -787,8 +787,8 @@ function resetRobot() {
 function getLevel() {
   if (document.getElementById("input_l_qm").checked) {
     return "qm";
-  } else if (document.getElementById("input_l_de").checked) {
-    return "de";
+  } else if (document.getElementById("input_l_sf").checked) {
+    return "sf";
   } else if (document.getElementById("input_l_f").checked) {
     return "f";
   } else {
