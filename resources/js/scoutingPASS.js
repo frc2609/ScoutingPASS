@@ -23,7 +23,7 @@ var options = {
 // Must be filled in: e=event, m=match#, l=level(q,qf,sf,f), t=team#, r=robot(r1,r2,b1..), s=scouter
 var requiredFields = ["e", "m", "l", "t", "r", "s", "as"];
 // var requiredFields = ["e", "m", "l", "r", "s", "as"];
-var requiredFields = [];
+// var requiredFields = [];
 var usingTBA = true;
 
 function addTimer(table, idx, name, data) {
@@ -707,12 +707,12 @@ function configure() {
   });
 
   // Configure endgame screen
-  var egc = mydata.endgame;
-  var egt = document.getElementById("endgame_table");
-  idx = 0;
-  egc.forEach(element => {
-    idx = addElement(egt, idx, element);
-  });
+  // var egc = mydata.endgame;
+  // var egt = document.getElementById("endgame_table");
+  // idx = 0;
+  // egc.forEach(element => {
+  //   idx = addElement(egt, idx, element);
+  // });
 
   // Configure postmatch screen
   pmc = mydata.postmatch;
@@ -790,7 +790,7 @@ function getLevel() {
   } else if (document.getElementById("input_l_sf").checked) {
     return "sf";
   } else if (document.getElementById("input_l_f").checked) {
-    return "f";
+    return "f1m";
   } else {
     return "";
   }
@@ -798,7 +798,7 @@ function getLevel() {
 
 function validateLevel() {
   if (document.getElementById("input_l_qm").checked ||
-    document.getElementById("input_l_de").checked ||
+    document.getElementById("input_l_sf").checked ||
     document.getElementById("input_l_f").checked
   ) {
     return true
@@ -1234,6 +1234,7 @@ function getTeamName(teamNumber) {
 
 function getMatch(matchKey) {
   //This needs to be different than getTeamName() because of how JS stores their data
+  console.log(matchKey)
   if (matchKey !== undefined) {
     if (schedule) {
       var ret = "";
@@ -1255,6 +1256,13 @@ function getCurrentTeamNumberFromRobot() {
 }
 
 function getCurrentMatchKey() {
+  let level = getLevel()
+
+  if (level == "sf") {
+    return document.getElementById("input_e").value + "_" + getLevel() + document.getElementById("input_m").value + "m1";
+  }
+
+
   return document.getElementById("input_e").value + "_" + getLevel() + document.getElementById("input_m").value;
 }
 
