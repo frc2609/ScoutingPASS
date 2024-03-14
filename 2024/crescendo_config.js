@@ -103,7 +103,7 @@ var config_data = `
       "code": "fp",
       "type": "counter"
     },
-    { "name": "Did they Successfully Climb?",
+    { "name": "Did Try/Successfully Climb?",
       "code": "climb",
       "type": "bool"
     },
