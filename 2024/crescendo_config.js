@@ -15,7 +15,7 @@ var config_data = `
     { "name": "Event",
       "code": "e",
       "type": "event",
-      "defaultValue": "2024casf",
+      "defaultValue": "2024onosh",
       "required": "true",
       "disabled": "true"
     },
@@ -113,27 +113,27 @@ var config_data = `
       "code": "ds",
       "type": "radio",
       "choices": {
-        "n": "Not Effective<br>",
-        "b": "Below Average<br>",
-        "a": "Average<br>",
-        "ab": "Above Average<br>",
-        "v": "Very Effective<br>",
-        "x": "Not Observed"
+        "1": "Not Effective<br>",
+        "2": "Below Average<br>",
+        "3": "Average<br>",
+        "4": "Above Average<br>",
+        "5": "Very Effective<br>",
+        "0": "Not Observed"
       },
-      "defaultValue": "x"
+      "defaultValue": "0"
     },
     { "name": "Defense Rating",
       "code": "dr",
       "type": "radio",
       "choices": {
-        "n": "Not Effective<br>",
-        "b": "Below Average<br>",
-        "a": "Average<br>",
-        "ab": "Above Average<br>",
-        "v": "Very Effective<br>",
-        "x": "Not Observed"
+        "1": "Not Effective<br>",
+        "2": "Below Average<br>",
+        "3": "Average<br>",
+        "4": "Above Average<br>",
+        "5": "Very Effective<br>",
+        "0": "Not Observed"
       },
-      "defaultValue": "x"
+      "defaultValue": "0"
     },
     { "name": "Died/Immobilized",
       "code": "die",
