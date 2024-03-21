@@ -167,6 +167,24 @@ h2{
     color: white;
 }
 
+.team_display {
+    font-family: Alexis;
+    text-align: center;
+    font-size: 20px;
+    font-weight: 300;
+    font-style: italic;
+    color: black;
+}
+
+.team_display_light {
+    font-family: Alexis;
+    text-align: center;
+    font-size: 20px;
+    font-weight: 300;
+    font-style: italic;
+    color: white;
+}
+
 .undoButton, .flipButton {
     font-family: Alexis;
     background-color: black; 

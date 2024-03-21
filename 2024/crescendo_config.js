@@ -15,7 +15,7 @@ var config_data = `
     { "name": "Event",
       "code": "e",
       "type": "event",
-      "defaultValue": "2024onosh",
+      "defaultValue": "test",
       "required": "true",
       "disabled": "true"
     },
@@ -83,12 +83,12 @@ var config_data = `
     "type": "field_image",
     "filename": "2024/field_image.png"
     },
+    { "name": "Speaker Scores",
+    "code": "tss",
+    "type": "counter"
+    },
     { "name": "Amp Scores",
       "code": "tas",
-      "type": "counter"
-    },
-    { "name": "Speaker Scores",
-      "code": "tss",
       "type": "counter"
     },
     { "name": "Missed",
