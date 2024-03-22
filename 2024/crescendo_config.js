@@ -113,7 +113,7 @@ var config_data = `
         "3": "Harmony",
         "4": "Did Not Attempt"
       },
-      "defaultValue": "4"
+      "required":"true"
     },
     { "name": "Fell from chain",
       "code": "fell",
