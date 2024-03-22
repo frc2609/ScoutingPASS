@@ -15,7 +15,7 @@ var config_data = `
     { "name": "Event",
       "code": "e",
       "type": "event",
-      "defaultValue": "test",
+      "defaultValue": "2024onwat",
       "required": "true",
       "disabled": "true"
     },
@@ -75,6 +75,11 @@ var config_data = `
     { "name": "Speaker Scores",
       "code": "ass",
       "type": "counter"
+    },
+    {
+      "name": "Left zone",
+      "code": "al",
+      "type": "bool"
     }
   ],
   "teleop": [
@@ -92,15 +97,15 @@ var config_data = `
       "type": "counter"
     },
     { "name": "Missed",
-      "code": "tta",
+      "code": "tm",
       "type": "counter"
     },
     { "name": "Fed Pieces",
       "code": "fp",
       "type": "counter"
     },
-    { "name": "Failed climb",
-      "code": "fallen",
+    { "name": "Fell from chain",
+      "code": "fell",
       "type": "bool"
     },
     { "name": "Note in Trap",
