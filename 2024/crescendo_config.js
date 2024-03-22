@@ -104,21 +104,6 @@ var config_data = `
       "code": "fp",
       "type": "counter"
     },
-    { "name": "End Game Status:",
-      "code": "endgame",
-      "type": "radio",
-      "choices": {
-        "1": "Park",
-        "2": "Climbed",
-        "3": "Harmony",
-        "4": "Did Not Attempt"
-      },
-      "required":"true"
-    },
-    { "name": "Fell from chain",
-      "code": "fell",
-      "type": "bool"
-    },
     { "name": "Note in Trap",
       "code": "nit",
       "type": "bool"
