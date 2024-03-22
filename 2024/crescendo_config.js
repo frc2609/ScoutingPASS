@@ -104,6 +104,17 @@ var config_data = `
       "code": "fp",
       "type": "counter"
     },
+    { "name": "End Game Status:",
+      "code": "endgame",
+      "type": "radio",
+      "choices": {
+        "1": "Park",
+        "2": "Climbed",
+        "3": "Harmony",
+        "4": "Did Not Attempt"
+      },
+      "defaultValue": "4"
+    },
     { "name": "Fell from chain",
       "code": "fell",
       "type": "bool"
